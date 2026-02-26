@@ -1,12 +1,18 @@
 package edu.iutcs.cr;
 
-import java.util.Scanner;
+import edu.iutcs.cr.util.InputManager;
 
-/**
- * @author Raian Rahman
- * @since 4/19/2024
- */
 public class MainMenu {
+    private static final MainMenu instance = new MainMenu();
+    private final InputManager inputManager;
+
+    private MainMenu() {
+        this.inputManager = InputManager.getInstance();
+    }
+
+    public static MainMenu getInstance() {
+        return instance;
+    }
 
     private void showMenu() {
         System.out.println("Please enter the type of vehicle [1-9]: ");
@@ -26,19 +32,7 @@ public class MainMenu {
     }
 
     public int showAndSelectOperation() {
-        Scanner scanner = new Scanner(System.in);
         showMenu();
-        int selectedOperation = -1;
-
-        while(selectedOperation<1 || selectedOperation>9) {
-            System.out.print("Enter your choice: ");
-            selectedOperation = scanner.nextInt();
-
-            if(selectedOperation<1 || selectedOperation>9) {
-                System.out.print("Enter a valid operation: ");
-            }
-        }
-
-        return selectedOperation;
+        return inputManager.readIntInRange(1, 9);
     }
 }

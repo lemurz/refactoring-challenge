@@ -1,19 +1,13 @@
 package edu.iutcs.cr.persons;
 
 import java.io.Serializable;
-import java.util.Scanner;
 
-/**
- * @author Raian Rahman
- * @since 4/18/2024
- */
 public class Buyer extends Person implements Serializable {
 
     private String paymentMethod;
 
     public Buyer() {
         super();
-        setPaymentMethod();
     }
 
     public Buyer(String id) {
@@ -24,10 +18,8 @@ public class Buyer extends Person implements Serializable {
         return paymentMethod;
     }
 
-    public void setPaymentMethod() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter new payment method:");
-        this.paymentMethod = scanner.nextLine();
+    public void setPaymentMethod(String paymentMethod) {
+        this.paymentMethod = paymentMethod;
     }
 
     @Override
